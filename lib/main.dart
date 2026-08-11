@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Koperasi Sekolah')),
-        body: const Center(child: Text('Selamat datang'),)
+        body: const Padding(padding: EdgeInsetsGeometry.all(16), child: Text('Selamat datang'),)
       ),
     );
   }
