@@ -30,7 +30,21 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Koperasi Sekolah')),
-        body: const Padding(padding: EdgeInsetsGeometry.all(16), child: Text('Selamat datang'),)
+        body: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Buku Tulis'),
+              Row(
+                children: const [
+                  Text('Anggota: Rp3.000'),
+                  Text('Umum: Rp3.500'),
+                ],
+              )
+            ],
+          ),
+        )
       ),
     );
   }
