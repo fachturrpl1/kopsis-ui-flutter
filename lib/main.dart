@@ -35,11 +35,18 @@ class MyApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Buku Tulis'),
+              const Text ('Buku Tulis'),
+              const SizedBox(height: 8),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text('Anggota: Rp3.000'),
                   Text('Umum: Rp3.500'),
+                ]
+              ),
+              Row(
+                children: [
+                  Text('data'),
                 ],
               )
             ],
