@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
 
+final List<Map<String, dynamic>> daftarBarang = [
+  {'nama':'Buku Tulis', 'anggota': 3000, 'umum':3500, 'stok':40},
+  {'nama':'Pulpen', 'anggota': 2500, 'umum':3000, 'stok':25},
+  {'nama':'Roti', 'anggota': 35000, 'umum':5500, 'stok':15},
+];
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-
   int stok = 40;
+  String kategori = 'atk';
+
+  IconData getIcon(String kategori) {
+    switch (kategori) {
+      case 'atk':
+        return Icons.edit_note;
+      case 'makanan':
+        return Icons.lunch_dining;
+      case 'minuman' :
+        return Icons.local_drink; 
+      default:
+        return Icons.category;
+    }
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -28,14 +46,15 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Koperasi Sekolah')),
         body: Card(
+          elevation: 4,
           margin: const EdgeInsets.all(16.0),
           child: ListTile(
-            leading: const Icon(Icons.inventory_2),
+            leading: Icon(getIcon(kategori)),
             title: const Text(
               'Buku Tulis',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
