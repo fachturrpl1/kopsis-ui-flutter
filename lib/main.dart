@@ -4,6 +4,13 @@ final List<Map<String, dynamic>> daftarBarang = [
   {'nama':'Buku Tulis', 'anggota': 3000, 'umum':3500, 'stok':40},
   {'nama':'Pulpen', 'anggota': 2500, 'umum':3000, 'stok':25},
   {'nama':'Roti', 'anggota': 35000, 'umum':5500, 'stok':15},
+  {'nama':'Manik-manik', 'anggota': 5000, 'umum':5500, 'stok':29},
+  {'nama':'Susu UHT', 'anggota': 6000, 'umum':8000, 'stok':35},
+  {'nama':'Buku Gambar', 'anggota': 5000, 'umum':6500, 'stok':31},
+  {'nama':'Permen Lolipop', 'anggota': 500, 'umum':1000, 'stok':87},
+  {'nama':'Coklat Premium', 'anggota': 8500, 'umum':9000, 'stok':5},
+  {'nama':'Roti Goreng', 'anggota': 4000, 'umum':5500, 'stok':49},
+  {'nama':'Rautan Pensil', 'anggota': 500, 'umum':1000, 'stok':39},
 ];
 void main() => runApp(MyApp());
 
@@ -21,6 +28,8 @@ class MyApp extends StatelessWidget {
         return Icons.lunch_dining;
       case 'minuman' :
         return Icons.local_drink; 
+      case 'inventaris':
+        return Icons.inventory_2;
       default:
         return Icons.category;
     }
@@ -50,21 +59,20 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: const Text('Koperasi Sekolah')),
-        body: Card(
-          elevation: 4,
-          margin: const EdgeInsets.all(16.0),
-          child: ListTile(
-            leading: Icon(getIcon(kategori)),
-            title: const Text(
-              'Buku Tulis',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        body: ListView.builder(
+          itemCount: daftarBarang.length,
+          itemBuilder: (context, index) {
+            final barang = daftarBarang[index];
+            return Card (
+              margin: const EdgeInsets.all(8),
+              child: ListTile(
+                leading: Icon(getIcon('inventaris')),
+                title: Text(barang['nama']),
+                subtitle: Text('Anggota Rp' + barang['anggota'].toString()),
+                trailing: Text('Stok' + barang['stok'].toString()),
               ),
-            subtitle: const Text('Anggota Rp3.000 | Umum Rp3.500'),
-            trailing: Text(
-              'Stok' + stok.toString(),
-              style: TextStyle(color: stok == 0 ? Colors.red : Colors.black),
-              ),
-          ),
+            );
+          }
         ),
       ),
     );
