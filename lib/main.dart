@@ -10,7 +10,7 @@ final List<Map<String, dynamic>> daftarBarang = [
   {'nama':'Permen Lolipop', 'anggota': 500, 'umum':1000, 'stok':87},
   {'nama':'Coklat Premium', 'anggota': 8500, 'umum':9000, 'stok':5},
   {'nama':'Roti Goreng', 'anggota': 4000, 'umum':5500, 'stok':49},
-  {'nama':'Rautan Pensil', 'anggota': 500, 'umum':1000, 'stok':39},
+  {'nama':'Rautan Pensil', 'anggota': 500, 'umum':1000, 'stok':0},
 ];
 void main() => runApp(MyApp());
 
@@ -63,6 +63,9 @@ class MyApp extends StatelessWidget {
           itemCount: daftarBarang.length,
           itemBuilder: (context, index) {
             final barang = daftarBarang[index];
+            if (barang['stok'] == 0) {
+              return const SizedBox.shrink();
+            }
             return Card (
               margin: const EdgeInsets.all(8),
               child: ListTile(
